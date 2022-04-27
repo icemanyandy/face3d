@@ -33,9 +33,9 @@
 </head>
 
 <body>
-<div id="info">
+<div id="info"><font size="5">
     3D Head Rendering and Control<br/>
-    Motionface - April 2022
+    <a href="index.html">Motionface</a> - April 2022</font> 
 </div>
 
 <script src="js/three.min.js"></script>
@@ -59,7 +59,7 @@
         {
         container = document.createElement('div');
         document.body.appendChild(container);
-        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 2000);
+        camera = new THREE.PerspectiveCamera(32, window.innerWidth / window.innerHeight, 1, 2000);
         camera.position.z = 1.35;
  
 
@@ -89,13 +89,13 @@
 
         THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
         new THREE.MTLLoader()
-            .setPath('https://gitee.com/softboys/autoxpay/raw/master/assets/')
+            .setPath('assets/')
             .load('model.mtl', function (materials)
             {
             materials.preload();
             new THREE.OBJLoader()
                 .setMaterials(materials)
-                .setPath('https://gitee.com/softboys/autoxpay/raw/master/assets/')
+                .setPath('assets/')
                 .load('model.obj', function (object)
                 {
                 scene.add(object);
@@ -145,7 +145,7 @@
         //camera.position.x += (mouseX - camera.position.x) * .05;
         //camera.position.y += (-mouseY - camera.position.y) * .05;
         camera.lookAt(scene.position);
-        console.timeEnd( 'OBJLoader '+ camera.position.z);
+        //console.timeEnd( 'OBJLoader '+ camera.position.z);
         renderer.render(scene, camera);
         }
 </script>
