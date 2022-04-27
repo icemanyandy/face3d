@@ -64,7 +64,7 @@
         {
         container = document.createElement('div');
         document.body.appendChild(container);
-        camera = new THREE.PerspectiveCamera(32, window.innerWidth / window.innerHeight, 1, 2000);
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 2000);
         camera.position.z = 1.35;
  
 
@@ -72,12 +72,20 @@
         scene = new THREE.Scene();
         scene.background = new THREE.Color(0xa0a0a0);
 
-        var ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+        var ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
         scene.add(ambientLight);
-        var pointLight = new THREE.PointLight(0xffffff, 0.8);
-        camera.add(pointLight);
-        scene.add(camera);
-
+        //var pointLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        //camera.add(pointLight);
+        //scene.add(camera);
+       
+         var light = new THREE.DirectionalLight(0xffffff,0.6);//光源颜色
+            light.position.set(200, 0, 500);//光源位置
+            scene.add(light); 
+            
+        var pointLight = new THREE.PointLight(0xffffff);
+        pointLight.position.set(20,20,-20);
+        scene.add(pointLight);
+        
         // model
         // Object load progress and error callback functions
         var onProgress = function (xhr)
@@ -122,7 +130,7 @@
         controls.enableDamping = true;
         controls.dampingFactor = 0.25;
         controls.rotateSpeed = 0.5;
-        controls.autoRotate = true;
+        //controls.autoRotate = true;
 
         window.addEventListener('resize', onWindowResize, false);
         }
